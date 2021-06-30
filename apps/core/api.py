@@ -41,6 +41,15 @@ class CommentList(generics.ListAPIView):
     permission_classes = [AllowAny]
 
 
+class CommentByTaskList(generics.ListAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        task = self.kwargs['task']
+        return Comment.objects.filter(task__id=task)
+
+
 class CommentDetail(generics.RetrieveAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer

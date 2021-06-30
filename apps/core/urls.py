@@ -1,5 +1,5 @@
 from django.urls import path
-from .api import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, CommentList, CommentDetail, CommentCreate, CommentUpdate, CommentDelete
+from .api import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, CommentList, CommentByTaskList, CommentDetail, CommentCreate, CommentUpdate, CommentDelete
 
 urlpatterns = [
     # Task
@@ -11,6 +11,7 @@ urlpatterns = [
 
     # Comment
     path('comments/', CommentList.as_view(), name='comment_list'),
+    path('comments/task/<int:task>/', CommentByTaskList.as_view(), name='comment_by_task_list'),
     path('comments/<int:pk>/', CommentDetail.as_view(), name='comment_detail'),
     path('comments/add/', CommentCreate.as_view(), name='comment_create'),
     path('comments/update/<int:pk>/', CommentUpdate.as_view(), name='comment_update'),
