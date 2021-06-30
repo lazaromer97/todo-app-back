@@ -1,7 +1,10 @@
 from django.urls import path
-from .api import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, CommentList, CommentByTaskList, CommentDetail, CommentCreate, CommentUpdate, CommentDelete
+from .api import APIWorking, TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, CommentList, CommentByTaskList, CommentDetail, CommentCreate, CommentUpdate, CommentDelete
 
 urlpatterns = [
+    # API Working
+    path('', APIWorking.as_view(), name='api_working'),
+
     # Task
     path('tasks/', TaskList.as_view(), name='task_list'),
     path('tasks/<int:pk>/', TaskDetail.as_view(), name='task_detail'),
