@@ -4,8 +4,7 @@ from django.db import models
 
 
 class Task(models.Model):
-    name = models.CharField(verbose_name='Name', max_length=120, unique=True)
-    description = models.TextField(verbose_name='Description')
+    text = models.CharField(verbose_name='Name', max_length=120, unique=True)
     completed = models.BooleanField(verbose_name='Completed', default=False)
 
     class Meta:
@@ -14,4 +13,4 @@ class Task(models.Model):
         verbose_name_plural = 'Tasks'
 
     def __str__(self):
-        return self.name
+        return self.text
