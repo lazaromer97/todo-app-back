@@ -33,6 +33,14 @@ class TaskCreate(generics.CreateAPIView):
     serializer_class = TaskSerializer
     permission_classes = [AllowAny]
 
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        return Response({
+            'status': 201,
+            'message': 'CREATED',
+            'data': response.data
+        })
+        
 
 class TaskUpdate(generics.UpdateAPIView):
     queryset = Task.objects.all()
@@ -71,6 +79,14 @@ class CommentCreate(generics.CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [AllowAny]
+
+    def create(self, request, *args, **kwargs):
+        response = super().create(request, *args, **kwargs)
+        return Response({
+            'status': 201,
+            'message': 'CREATED',
+            'data': response.data
+        })
 
 
 class CommentUpdate(generics.UpdateAPIView):
